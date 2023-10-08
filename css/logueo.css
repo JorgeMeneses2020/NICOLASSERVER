@@ -1,0 +1,107 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+body {
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f1f1f1; */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 150px;
+    width: 40%;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #005f6b;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.register-link,
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.register-link a,
+.login-link a {
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.register-link a:hover,
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* ... Estilos existentes ... */
+
+.show-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(ojo.png); /* Ruta de la imagen del icono de "Mostrar contraseña" */
+    background-size: cover;
+    cursor: pointer;
+  }
+  
+  .alerta{
+    width: 100%;
+    background-color: #45a049;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    width: 40%;
+    padding: 20px 0;
+  }
+
+  @media (max-width:480px) {
+    .container {
+        width: 80%;
+       
+    }
+  }

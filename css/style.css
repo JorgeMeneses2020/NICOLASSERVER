@@ -1,0 +1,365 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+#barral {
+  width: 15%;
+  background-color: #333;
+  color: white;
+  float: left;
+  height: 800px;
+  text-decoration: none;
+  padding: 13px;
+  margin: 0;
+}
+
+#barral ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 19px;
+  opacity: 0.8;
+}
+
+#barral ul li {
+  list-style: none;
+}
+
+#barral h1 {
+  margin: 20px 5px;
+  font-size: 29px;
+  opacity: 0.7;
+}
+
+#barral h3 {
+  margin: 14px 5px;
+  font-size: 17px;
+  opacity: 0.7;
+}
+
+#barral h4 {
+  margin: 20px 5px;
+  font-size: 15px;
+  opacity: 0.5;
+}
+
+#menu li {
+  margin: 15px 5px;
+}
+
+
+#content {
+  /* margin-left: 205px; */
+  width: 85%;
+  background-color: #005f6b;
+  /* height: 1000px; */
+
+}
+
+header {
+  width: 100%;
+  background-color: #fff;
+}
+
+#encabezado {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+}
+
+#encabezado #logo {
+  width: 20%;
+  padding-left: 10px;
+}
+
+#encabezado h1 {
+  width: 60%;
+  text-align: center;
+}
+
+#encabezado #escudo {
+  width: 20%;
+  text-align: right;
+  padding-right: 10px;
+}
+
+#encabezado #escudo img {
+  width: 20%;
+}
+
+
+
+
+#logo img {
+  width: 24%;
+  float: left;
+}
+
+#cards {
+
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  min-height: 40px;
+}
+
+.card {
+  margin-top: 30px;
+  margin-bottom: 70px;
+  width: 30%;
+  background: #fff;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.card .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 1000px;
+  overflow: hidden;
+  background-color: #ccc;
+}
+
+.card .icon img {
+  width: 100%;
+}
+
+.card .textos {
+  width: 80%;
+  display: flex;
+}
+
+p {
+  max-height: 300px;
+}
+
+* SWITCHES */ #switches {
+  margin-top: 40px;
+  height: 80px;
+  display: flex;
+  margin: 0;
+}
+
+.switch,
+.sensors {
+
+  width: 30%;
+  height: 64px;
+  position: relative;
+  background-color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.sensors .caja {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+}
+
+.caja .icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  /* background-color: #2e3e4e; */
+}
+.slider-container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.slider {
+  width: 300px;
+}
+.caja .text {
+  width: 80%;
+}
+
+.color1 {
+  background-color: #a88add;
+}
+
+.color2 {
+  background-color: #0cc2aa;
+}
+
+.color3 {
+  background-color: #fcc100;
+}
+
+.switch .caja {
+  height: 100%;
+  text-align: center;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.caja .icon i {
+  line-height: 45px;
+}
+
+.caja .text {
+  display: flex;
+}
+
+#switches {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.switch input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch label {
+  position: absolute;
+  top: 20px;
+  left: 130px;
+  width: 60px;
+  height: 34px;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.tooltip {
+  position: relative; /* Asegura que el tooltip sea relativo a este elemento */
+  text-decoration: none; /* Elimina la subrayado predeterminado de los enlaces */
+  z-index: 50;
+  
+}
+
+.tooltip.title{
+  width: 100px;
+}
+
+
+.tooltip::before {
+  content: attr(title); /* Establece el contenido del tooltip como el atributo 'title' */
+  position: absolute; /* Coloca el tooltip en una posición absoluta */
+  background-color: rgb(26, 70, 59); /* Cambia el color de fondo del tooltip */
+  color: #fff; /* Cambia el color del texto del tooltip */
+  padding: 5px 10px; /* Añade relleno al tooltip para mejor legibilidad */
+  border-radius: 3px; /* Añade bordes redondeados al tooltip */
+  opacity: 0; /* Inicialmente, el tooltip está oculto */
+  transition: opacity 0.3s; /* Agrega una transición para suavizar la aparición */
+  white-space:  pre-line; /* Evita que el tooltip se divida en varias líneas */
+}
+
+.tooltip:hover::before {
+  opacity: 1; /* Muestra el tooltip cuando el usuario coloca el cursor sobre el elemento */
+  top: -30px; /* Ajusta la posición del tooltip según tus necesidades */
+}
+.switch label:before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  top: 4px;
+  left: 4px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s;
+}
+
+.switch input[type="checkbox"]:checked+label {
+  background-color: #4caf50;
+}
+
+.switch input[type="checkbox"]:checked+label:before {
+  left: 30px;
+}
+
+#hamburguer{
+  display: none;
+}
+
+@media(max-width:480px) {
+
+
+  #hamburguer {
+    display: block;
+    position: absolute;
+    z-index: 20;
+    top: 27px;
+    left: 45px;
+}
+
+#barral{
+  position:absolute;
+  display: none;
+  flex-direction: column;
+  width: 50%;
+  height: 300px;
+}
+
+#menu{
+  margin: 0;
+}
+
+.card{
+  width: 90%;
+  
+}
+
+.switch{
+  width: 90%;
+}
+  #container {
+    width: 100%;
+    display: flex;
+  }
+
+  #encabezado {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+  }
+  #encabezado #logo {
+    width: 60%;
+    padding-left: 10px;
+  }
+
+  #logo img {
+    width: 13%;  
+    margin-top: 60px;
+    position: absolute;
+    right: 36px;
+}
+  #encabezado #escudo {
+    width: 60%;
+    text-align: right;
+    padding-right: 10px;
+  }
+  #encabezado #escudo img {
+    width: 55%;
+  }
+
+  #cards {
+
+   flex-direction: column;
+    justify-content: space-between;
+    min-height: 40px;
+  }
+
+  #switches {
+    flex-direction: column;
+}
+}
