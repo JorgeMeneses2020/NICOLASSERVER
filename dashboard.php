@@ -2,8 +2,6 @@
 session_start();
 $logged=$_SESSION['logged'];
 
-
-
 if(!$logged){
     //echo "ingreso no autorizado";
  
