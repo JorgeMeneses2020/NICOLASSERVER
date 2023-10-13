@@ -138,7 +138,7 @@ function process_msg(topic,message){
     //ej:"10,11,12"
     if(topic=="values"){
         var msg = message.toString();
-        var sp = msg.split(",")
+        var sp = msg.split(",");
         var temp = sp[0];
         var hums = sp[1];
         var huma = sp[2];
