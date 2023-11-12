@@ -19,6 +19,8 @@ if(!$logged){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
+ 
+
 </head>
 
 <body>
@@ -30,6 +32,7 @@ if(!$logged){
             <h4>Main</h4>
             <ul id="menu">
                 <li><a href="./index.html">Principal</a></li>
+                <li><a href="./manual.php">Principal</a></li>
             </ul>
         </div>
         <div id="content">
@@ -50,11 +53,14 @@ if(!$logged){
                         <img src="./img/hygrometer.png" alt="">
                     </div>
                     <div class="textos">
-                        <p id="display_huma" class="tooltip" title="En esta caja puedes observar la humedad de suelo actual">--</p>
+                        <p id="display_hums" class="tooltip" title="En esta caja puedes observar la humedad de suelo actual">--</p>
                         <span>%</span>
                         <h4>Humedad de suelo</h4>
+                       
                     </div>
-                    
+                    <div style="width: 100%;">
+                          <canvas id="myChart"></canvas>
+                        </div>
                 </div>
                 <div class="card">
                     <div class="icon">
@@ -65,17 +71,23 @@ if(!$logged){
                         <span>°C</span>
                         <h4>Temperatura</h4>
                     </div>
+                    <div style="width: 100%;">
+                          <canvas id="myChart2"></canvas>
+                        </div>
                 </div>
                 <div class="card">
                     <div class="icon">
                         <img src="./img/moisture.png" alt="">
                     </div>
                     <div class="textos">
-                        <p id="display_hums" class="tooltip" title="En esta caja puedes observar la humedad ambiental actual">--</p>
+                        <p id="display_huma" class="tooltip" title="En esta caja puedes observar la humedad ambiental actual">--</p>
                         <span>%</span>
                         <h4>Humedad ambiental</h4>
                         
                     </div>
+                    <div style="width: 100%;">
+                          <canvas id="myChart3"></canvas>
+                        </div>
                 </div>
             </div>
 
@@ -120,16 +132,131 @@ if(!$logged){
         </div>
 
     </div>
+    <!-- LIBRERÍA PARA GRÁFICOS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./index.js"></script>
     <script src="./jquery.js"></script>
     <script src="./mqtt.min.js"></script>
     
     <script type="text/javascript">
-
-function update_values(temp,huma,hums){
+ let humPrev=0;
+ let temPrev=0;
+let humaPrev=0;
+function update_values(temp,hums,huma){
     $("#display_temp").html(temp);
     $("#display_huma").html(huma);
     $("#display_hums").html(hums);
+   
+    if(humPrev !== hums){
+        grafico(hums);
+        humPrev= hums;
+    }  
+    
+    if(humaPrev !== huma){
+        graficoHuma(huma);
+        humaPrev= huma;
+    }     
+    
+    if(temPrev !== temp){
+        graficoTemp(temp);
+        temPrev= temp;
+    }    
+            
+        //  console.log(humPrev);
+   
+}
+let myChart;
+var myChart2;
+let myChart3;
+function grafico(hum=0){
+    const humedad = hum;   
+  
+        const humedadRestante = 100 - humedad;
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+     if (myChart) {
+        myChart.destroy();
+    }
+         myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [`Humedad de suelo ${humedad}%`, `Humedad Restante ${humedadRestante}%`],
+                datasets: [{
+                    label: `Humedad del Suelo:`,
+                    data: [humedad, humedadRestante],
+                    backgroundColor: [                        
+                        'rgba(148, 195, 246, 0.6)',
+                        'rgba(184, 85, 74, 0.6)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false
+            }
+        });
+}
+
+function graficoTemp(temp=0){
+   
+
+        const ctx = document.getElementById('myChart2').getContext('2d');
+        if (myChart2) {
+             myChart2.destroy();
+        }
+     myChart2 = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Temperatura Actual'],
+            datasets: [{
+                label: 'Temperatura',
+                data: [temp],
+                backgroundColor: 'rgba(243, 177, 61, 1)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                barPercentage: 0.2
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+
+                }
+            }
+        }
+    });
+}
+function graficoHuma(huma=0){
+    const humedadAmbiental = huma;
+   
+    console.log(huma);
+        const humedadRestante = 100 - humedadAmbiental;
+
+        const ctx = document.getElementById('myChart3').getContext('2d');
+        if (myChart3) {
+        myChart3.destroy();
+    }
+         myChart3 = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [`Humedad de suelo ${humedadAmbiental}%`, `Humedad Restante`],
+                datasets: [{
+                    label: `Humedad ambiental:`,
+                    data: [humedadAmbiental, humedadRestante],
+                    backgroundColor: [                   
+                        
+                        'rgba(148, 195, 246, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                       
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false
+            }
+        });
 }
 
 
@@ -143,6 +270,7 @@ function process_msg(topic,message){
         var hums = sp[1];
         var huma = sp[2];
         update_values(temp,hums,huma)
+        // grafico(hums);
     }
     
     if(topic=="alerta"){
